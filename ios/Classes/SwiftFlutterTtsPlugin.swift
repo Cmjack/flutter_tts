@@ -191,11 +191,11 @@ public class SwiftFlutterTtsPlugin: NSObject, FlutterPlugin, AVSpeechSynthesizer
   }
 
   public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-//    do {
-//      try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
-//    } catch {
-//      print(error)
-//    }
+    do {
+      try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+    } catch {
+      print(error)
+    }
     self.channel.invokeMethod("speak.onComplete", arguments: nil)
   }
 
