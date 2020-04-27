@@ -42,6 +42,22 @@ public class SwiftFlutterTtsPlugin: NSObject, FlutterPlugin, AVSpeechSynthesizer
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
+    case "pause":
+        let success:Bool =  self.synthesizer.pauseSpeaking(at: AVSpeechBoundary.immediate)
+        if success {
+            result(1)
+        }else{
+            result(0)
+        }
+        break
+    case "continueSpeaking":
+        let success:Bool = self.synthesizer.continueSpeaking()
+        if success {
+             result(1)
+         }else{
+             result(0)
+         }
+        break
     case "speak":
       let text: String = call.arguments as! String
       self.speak(text: text)

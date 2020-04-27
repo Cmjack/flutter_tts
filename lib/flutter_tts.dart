@@ -41,6 +41,12 @@ class FlutterTts {
         "text": text,
         "fileName": fileName,
       });
+  /// [Future] which invokes the platform specific method for pause
+  Future<dynamic> setPause() => _channel.invokeMethod('pause');
+
+  /// [Future] which invokes the platform specific method for continueSpeaking
+  Future<dynamic> setContinueSpeaking() =>
+      _channel.invokeMethod('continueSpeaking');
 
   /// [Future] which invokes the platform specific method for setLanguage
   Future<dynamic> setLanguage(String language) =>
